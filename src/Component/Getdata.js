@@ -23,6 +23,7 @@ export default function StudentList(props) {
     .then(response=> {
       if (response.data !== null){
         alert("Record Deleted Successfully");
+        setStudents(students.filter(student=>student.id!==studentId));
 
       }
     })
@@ -61,7 +62,7 @@ export default function StudentList(props) {
 
                   <Button size="sm" variant="outline-danger" onClick={deleteStudent.bind(this,student.id)}><FontAwesomeIcon icon={faTrash}> Delete </FontAwesomeIcon></Button>
                       {/* <Button size="sm" variant="outline-danger" onClick={()=>deleteStudent(student.id)}><FontAwesomeIcon icon={faTrash}> Delete </FontAwesomeIcon></Button> */}
-                      
+
                     <ButtonGroup>
                       <Button size="sm" variant="outline-primary"><FontAwesomeIcon icon={faEdit}> Edit </FontAwesomeIcon></Button>{ ' '}
                       <Button size="sm" variant="outline-danger"><FontAwesomeIcon icon={faTrash}> Delete </FontAwesomeIcon></Button>
