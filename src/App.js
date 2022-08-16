@@ -5,7 +5,7 @@ import Getdata from './Component/Getdata';
 import { Container } from 'react-bootstrap';
 import ReactDOM from 'react-dom/client';
 import Footer from "./Component/Footer";
-
+import {BrowserRouter as Router, Routes, Route} from 'react-router-dom'
 
 
 import {
