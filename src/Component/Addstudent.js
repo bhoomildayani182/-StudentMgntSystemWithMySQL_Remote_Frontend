@@ -20,8 +20,9 @@ const Addstudent = () => {
     let saveStudent = () =>{
         
         axios.post("http://localhost:8080/student", student)
-        .then(Response => Response.data )
+        .then(Response => Response.data, alert("Successfully Add Student Data"))
         .catch(error =>  alert(error))
+        
     }
 
     
