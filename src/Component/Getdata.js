@@ -18,6 +18,15 @@ export default function StudentList(props) {
       .catch((error) => alert(error));
   };
 
+  let deleteStudent = (studentId) => {
+    axios.delete("http://localhost:8080/student/"+studentId)
+    .then(response=> {
+      if (response.data !== null){
+        alert("Record Deleted Successfully");
+
+      }
+    })
+  }
 
 
   return (
@@ -49,6 +58,10 @@ export default function StudentList(props) {
                   <td>{student.address}</td>
                   
                   <td>
+
+                  <Button size="sm" variant="outline-danger" onClick={deleteStudent.bind(this,student.id)}><FontAwesomeIcon icon={faTrash}> Delete </FontAwesomeIcon></Button>
+                      {/* <Button size="sm" variant="outline-danger" onClick={()=>deleteStudent(student.id)}><FontAwesomeIcon icon={faTrash}> Delete </FontAwesomeIcon></Button> */}
+                      
                     <ButtonGroup>
                       <Button size="sm" variant="outline-primary"><FontAwesomeIcon icon={faEdit}> Edit </FontAwesomeIcon></Button>{ ' '}
                       <Button size="sm" variant="outline-danger"><FontAwesomeIcon icon={faTrash}> Delete </FontAwesomeIcon></Button>
