@@ -25,11 +25,9 @@ export default function StudentList(props) {
       if (response.data !== null){
         props.showAlert("success", "Record deleted successfully")
         setStudents(students.filter(student=>student.id!==studentId));
-
       }
     })
   }
-
 
   return (
     <div className="my-3">
@@ -58,18 +56,13 @@ export default function StudentList(props) {
                   <td>{student.id}</td>
                   <td>{student.name}</td>
                   <td>{student.address}</td>
-                  
                   <td>
-
-                  <Button size="sm" variant="outline-danger" onClick={deleteStudent.bind(this,student.id)}><FontAwesomeIcon icon={faTrash}> Delete </FontAwesomeIcon></Button>
-                      {/* <Button size="sm" variant="outline-danger" onClick={()=>deleteStudent(student.id)}><FontAwesomeIcon icon={faTrash}> Delete </FontAwesomeIcon></Button> */}
-
                     <ButtonGroup>
-                    <Link to={"/student/"+student.id}><Button size="sm" variant="outline-primary"><FontAwesomeIcon icon={faEdit}> Edit </FontAwesomeIcon></Button></Link>{ ' '}
-                      <Button size="sm" variant="outline-danger"><FontAwesomeIcon icon={faTrash}> Delete </FontAwesomeIcon></Button>
+                      <Link to={"/student/"+student.id}><Button size="sm" variant="outline-primary"><FontAwesomeIcon icon={faEdit}> Edit </FontAwesomeIcon></Button></Link>{ ' '}
+                      <Button size="sm" variant="outline-danger" onClick={deleteStudent.bind(this,student.id)}><FontAwesomeIcon icon={faTrash}> Delete </FontAwesomeIcon></Button>
+                      {/* <Button size="sm" variant="outline-danger" onClick={()=>deleteStudent(student.id)}><FontAwesomeIcon icon={faTrash}> Delete </FontAwesomeIcon></Button> */}
                     </ButtonGroup>
                   </td>
-                  
                 </tr>
                 )
               )}

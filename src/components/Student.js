@@ -8,8 +8,10 @@ export default function Student(props) {
   const [id, setId] = useState(null);
   const [name, setName] = useState(null);
   const [address, setAddress] = useState(null);
+
   const { studentId } = useParams(); // Get the Path Parameter from the URL
   const navigate = useNavigate();
+
   useEffect(() => {
     if (studentId) {
       axios
@@ -30,6 +32,7 @@ export default function Student(props) {
     name: name,
     address: address,
   };
+
   let textChanged = (event) => {
     if (event.target.name === "id") {
       setId(event.target.value);
@@ -39,6 +42,7 @@ export default function Student(props) {
       setAddress(event.target.value);
     }
   };
+
   let saveStudent = (event) => {
     event.preventDefault();
     
@@ -61,6 +65,7 @@ export default function Student(props) {
       }
     });
   };
+
   return (
     <div className="my-3">
       <Container>
