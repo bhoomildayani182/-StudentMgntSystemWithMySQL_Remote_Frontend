@@ -23,7 +23,7 @@ export default function StudentList(props) {
     axios.delete("http://localhost:8080/student/"+studentId)
     .then(response=> {
       if (response.data !== null){
-        alert("Record Deleted Successfully");
+        props.showAlert("success", "Record deleted successfully")
         setStudents(students.filter(student=>student.id!==studentId));
 
       }

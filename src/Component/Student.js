@@ -4,14 +4,12 @@ import { Container, Form, Card, Button } from "react-bootstrap";
 import { Navigate, useParams } from "react-router-dom";
 import { useNavigate } from "react-router-dom";
 
-export default function Student() {
+export default function Student(props) {
   const [id, setId] = useState(null);
   const [name, setName] = useState(null);
   const [address, setAddress] = useState(null);
-
   const { studentId } = useParams(); // Get the Path Parameter from the URL
   const navigate = useNavigate();
-
   useEffect(() => {
     if (studentId) {
       axios
@@ -23,7 +21,7 @@ export default function Student() {
             setAddress(response.data.address);
           }
         })
-        .catch((error) => alert(error));
+        .catch((error) => props.showAlert("danger", "Error"));
     }
   }, []);
 
@@ -32,7 +30,6 @@ export default function Student() {
     name: name,
     address: address,
   };
-
   let textChanged = (event) => {
     if (event.target.name === "id") {
       setId(event.target.value);
@@ -42,30 +39,28 @@ export default function Student() {
       setAddress(event.target.value);
     }
   };
-
   let saveStudent = (event) => {
     event.preventDefault();
-
+    
       axios
         .post("http://localhost:8080/student", student)
         .then((response) => {
           if (response.data != null) {
-            alert("Record added successfully");
+            props.showAlert("success", "Record added successfully");
           }
         })
-        .catch((error) => alert(error));
+        .catch((error) => props.showAlert("danger", "Error"));
   };
 
   let updateStudent = (event) => {
     event.preventDefault();
     axios.put("http://localhost:8080/student/" + studentId, student).then((response) => {
       if (response.data != null) {
-        alert("Record Updated successfully");
+        props.showAlert("success", "Record updated successfully");
         navigate("/listStudents"); // Navigate to Students List Components
       }
     });
   };
-
   return (
     <div className="my-3">
       <Container>

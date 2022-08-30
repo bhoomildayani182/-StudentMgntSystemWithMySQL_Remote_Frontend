@@ -6,7 +6,10 @@ import { Container } from 'react-bootstrap';
 import ReactDOM from 'react-dom/client';
 import Footer from "./Component/Footer";
 import {BrowserRouter as Router, Routes, Route} from 'react-router-dom'
-import {BrowserRouter} from 'react-router-dom';
+import {BrowserRouter} from 'react-router-dom'
+
+
+
 function App() {
   return (
     <div className="App">
@@ -15,7 +18,6 @@ function App() {
       <Navigationbar />
         <Routes>
           <Route path='/adddata' element={<Addstudent />} />
-          <Route path="student/:studentId" element={<Addstudent />}/>
         </Routes>
         <Routes>
           <Route path='/getdata' element={<Getdata />} />
