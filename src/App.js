@@ -7,6 +7,8 @@ import Container from "react-bootstrap/Container";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import MyAlert from "./components/MyAlert";
 import { useState } from "react";
+import Signup from "./components/Signup";
+import Login from "./components/Login";
 
 function App() {
   const [alert, setAlert] = useState(null);
@@ -28,15 +30,24 @@ function App() {
         <MyAlert alert={alert} />
         <Container>
           <Routes>
-            <Route path="student" element={<Student showAlert={showAlert} />} />
+            <Route path="/student" element={<Student showAlert={showAlert} />} />
             <Route
-              path="student/:studentId"
+              path="/student/:studentId"
               element={<Student showAlert={showAlert} />}
             />
             <Route
-              path="listStudents"
+              path="/listStudents"
               element={<StudentList showAlert={showAlert} />}
             />
+            <Route
+              path="/singup"
+              element={<Signup showAlert={showAlert} />}
+            />
+            <Route
+              path="/login"
+              element={<Login showAlert={showAlert} />}
+            />
+            
           </Routes>
         </Container>
         <Footer />
